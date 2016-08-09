@@ -1,21 +1,50 @@
-## Lumen PHP Framework
+Sendgrid Contact Subscribe
+==========================
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+This is built as a backend to supplement the Sendgrid Contacts API.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+Sendgrid's changes to the Marketing Features does not include a built-in widget
+that we can add to the site. The basic use-case covers a basic subscription widget, for a single contact list.
 
-## Official Documentation
+Built on-top Laravel's Lumen.
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+Expected Use Case
+-----------------
 
-## Security Vulnerabilities
+1. You have a subscription widget on your website that contains a single field for an email address. This form submit's to this project's root url.
+The user enters in an email and Submit's the form.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+2. This would register the user with that email to a subscription list.
 
-### License
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Setup
+-----
+
+    # setup your server
+    vagrant up
+    vagrant ssh
+
+    # install dependencies
+    composer install
+
+    # copy .env.example to .env
+    cp .env.example .env
+
+
+
+Deployment
+----------
+
+Change the following values in your .env file:
+
+    SENDGRID_API_KEY=ADD_YOUR_SENDGRID_API_KEY
+    SENDGRID_SUBSCRIPTION_LIST_ID=ADD_YOUR_SUBSCRIPTION_LIST_ID
+
+Point your Server to serve the website from the `public/` folder.
+
+
+
+To Change URL Submission path
+-----------------------------
+
+edit the routes.php and enter the path.
